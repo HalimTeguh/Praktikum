@@ -3,6 +3,8 @@ public class MainPegawai {
         Pegawai pgw1 = new Pegawai("Anto", "001", 10);
         Pegawai pgw2 = new Pegawai("Bagus", "002", 8);
 
+        System.out.println("PROGRAM MENGHITUNG PENGHASILAN HARIAN\n");
+
         pgw1.hitungGajiHarian();
         pgw1.cetakPenghasilan();
 
