@@ -36,7 +36,7 @@ public class User {
         this.name = name;
         this.sepatu = sepatu;
         this.skin = skin;
-        if (skin.equals(skin.getName())) {
+        if (this.skin.getName().equalsIgnoreCase(skin.getName())) {
             int tempDura = sepatu.getDura();
             tempDura += skin.getBenefit();
             sepatu.setDura(tempDura);
@@ -87,7 +87,18 @@ public class User {
         System.out.print("Do you wanna repair your shoes? (y/n) :");
         String choose = sc.nextLine();
 
-        System.out.println("your shoes have been repaired, Thank you very much");
+        if (choose.equalsIgnoreCase("y")) {
+            if (koin > 0) {
+                koin--;
+                sepatu.setDura(sepatu.getDura() + 2);
+                System.out.println("your shoes have been repaired, Thank you very much");
+            } else {
+                System.out.println("Your koin is not enough");
+            }
+        } else {
+            System.out.println("Don't Forget to repair your shoes,  See you next time");
+        }
+
     }
 
     public void info() {
@@ -112,27 +123,22 @@ public class User {
 
         if (choose.equalsIgnoreCase("y")) {
             if (sepatu.getDura() > task.getDeDura()) {
-                this.koin += task.getReward();
-
-                int tempDura = sepatu.getDura();
+                this.koin += task.getReward(); // set KOIN
+                int tempDura = sepatu.getDura(); // set DURABILITY
                 tempDura -= task.getDeDura();
                 sepatu.setDura(tempDura);
-
-                exp += task.getExp();
+                exp += task.getExp(); // set EXP
                 if (exp >= 10) {
                     level++;
                     exp -= 10;
                 }
-
                 info();
-
             } else {
                 info();
-
-                System.out.println("your shoes will broken if your start this taks. please repair your shoes!");
+                System.out.println(
+                        "your shoes will broken if your start this taks. please repair your shoes!");
             }
         }
-
         System.out.println("**Finish " + task.getName() + "**\n");
 
     }

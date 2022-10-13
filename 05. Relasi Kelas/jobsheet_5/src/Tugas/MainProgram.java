@@ -30,5 +30,10 @@ public class MainProgram {
         halim.startTask(running);
         halim.startTask(running);
 
+        halim.repairShoes();
+        halim.repairShoes();
+
+        halim.info();
+
     }
 }
